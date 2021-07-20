@@ -34,3 +34,7 @@ a4 = '%-20s' % text
 print(a4)
 a5 = '%20s' % text
 print(a5)
+a6 = '%-+20s' % text
+print(a6)
+a7 = '%+20s' % text
+print(a7)
