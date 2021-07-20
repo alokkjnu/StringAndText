@@ -11,6 +11,8 @@ print(s2)
 t = '--------hello======'
 s3 = t.lstrip('-')
 print(s3)
+s7 = t.rstrip('=')
+print(s7)
 
 s4 = t.strip('-=')
 print(s4)
