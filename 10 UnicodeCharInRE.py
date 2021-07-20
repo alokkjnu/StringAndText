@@ -6,5 +6,5 @@ num = re.compile('\d+')
 n1 = num.match('123')
 print(n1)
 
-arabic = re.compile('[\u0600-\u06ff-\u0750-\u077f-\u08a0-\u08ff]+')
+arabic = re.compile('[\u0600-\u06ff-\u0750-\u077f-\u08a0-\u08ff-\u0756]+')
 print(arabic)
