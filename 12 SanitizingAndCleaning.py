@@ -36,3 +36,7 @@ def clean_space(s):
     s = s.replace('\t',' ')
     s = s.replace('\f',' ')
     return s
+
+g =clean_space('pýtĥöñ\fis\tawesome\r\n')
+print(g)
+
