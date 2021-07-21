@@ -107,3 +107,38 @@ f = e.parse('2 + 3 * 4')
 print(f)
 g = e.parse('2 + ( 3 + 4 ) * 5')
 print(g)
+
+class ExpressionTreeBulder(ExpressionEvaluator):
+    def expr(self):
+        "expression ::= term{( '+'|'-) term}'"
+        exprval = self.term()
+        while self._accept('PLUS') or self._accept('MINUS'):
+            op = self.tok.type
+            right = self.term()
+            if op == 'PLUS':
+                exprval = ('+',exprval, right)
+            elif op == 'MINUS':
+                exprval = ('-',exprval,right)
+        return exprval
+    def term(self):
+        "term ::= factor { ( '*' | '/') factor }"
+        termval = self.factor()
+        while self._accept('TIMES') or self._accept('DIVIDE'):
+            op = self.tok.type
+            right = self.factor()
+            if op == 'TIMES':
+                termval = ('*',termval,right)
+            elif op == 'DIVIDE':
+                termval = ('/',termval,right)
+        return termval
+    
+    def factor(self):
+        'factor ::= NUM | ( expr )'
+        if self._accept('NUM'):
+            return int(self.tok.value)
+        elif self._accept('LPAREN'):
+            exprval = self.expr()
+            self._accept('RPAREN')
+            return exprval
+        else:
+            raise SyntaxError("Expected NUM or LPAREN")
