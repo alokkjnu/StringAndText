@@ -142,3 +142,13 @@ class ExpressionTreeBulder(ExpressionEvaluator):
             return exprval
         else:
             raise SyntaxError("Expected NUM or LPAREN")
+
+e = ExpressionTreeBulder()
+i = e.parse(' 2 + 3')
+print(i)
+j = e.parse('2 + 3 * 4')
+print(j)
+k = e.parse('2 + (3 + 4) *5')
+print(k)
+l = e.parse('2 + 3 + 4')
+print(l)
