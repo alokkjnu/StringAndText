@@ -29,3 +29,6 @@ for tok in generate_token(master_pat,text):
     print(tok)
 
 
+tokens = (tok for tok in generate_token(master_pat,text) if tok.type != 'WS')
+for tok in tokens:
+    print(tok)
